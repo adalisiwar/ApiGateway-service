@@ -30,6 +30,7 @@ GET  /api/restaurants          - List restaurants
 GET  /api/restaurants/{id}     - Get restaurant details
 GET  /api/menu/{restaurantId}  - Get menu
 POST /api/users/register       - Register
+.....
 ```
 
 ## Protected Endpoints (Auth Required)
@@ -39,4 +40,5 @@ GET/PUT/DELETE /api/users/**           - User operations
 POST /api/orders                        - Create order
 GET  /api/orders/{id}                   - Get order
 GET  /api/delivery/**                   - Delivery status
+.....
 ```
