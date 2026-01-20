@@ -18,10 +18,7 @@ api-gateway/
 ├── src/main/resources/
 │   └── application.properties               ← Configuration
 ├── src/test/java/com/example/api_gateway/
-│   └── ApiGatewayIntegrationTests.java     ← Integration tests
 ├── pom.xml                                  ← Maven dependencies
-├── GATEWAY_README.md                        ← Full documentation
-├── QUICK_START.md                           ← Quick start guide
 └── application-example.yml                  ← Profile examples
 ```
 
@@ -32,10 +29,7 @@ api-gateway/
 GET  /api/restaurants          - List restaurants
 GET  /api/restaurants/{id}     - Get restaurant details
 GET  /api/menu/{restaurantId}  - Get menu
-GET  /api/reviews              - Get reviews
-POST /api/auth/login           - Login
 POST /api/users/register       - Register
-POST /api/auth/refresh         - Refresh token
 ```
 
 ## Protected Endpoints (Auth Required)
@@ -44,8 +38,5 @@ POST /api/auth/refresh         - Refresh token
 GET/PUT/DELETE /api/users/**           - User operations
 POST /api/orders                        - Create order
 GET  /api/orders/{id}                   - Get order
-POST /api/payments                      - Make payment
 GET  /api/delivery/**                   - Delivery status
-POST /api/reviews                       - Create review
-GET  /api/notifications/**              - Get notifications
 ```
