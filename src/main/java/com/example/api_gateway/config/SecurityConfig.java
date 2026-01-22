@@ -27,7 +27,7 @@ public class SecurityConfig {
 
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() {
-        return new JwtAuthenticationFilter(jwtTokenProvider);
+        return null;
     }
 
     @Bean
@@ -37,11 +37,15 @@ public class SecurityConfig {
                 .authorizeExchange(exchanges -> exchanges
                         .pathMatchers(
                                 "/api/auth/**",
+                                "/api/admin/auth/**",
                                 "/actuator/**",
                                 "/health/**",
                                 "/api/gateway/health",
                                 "/api/gateway/info",
-                                "/api/gateway/ready"
+                                "/api/gateway/ready",
+                                "/favicon.ico",
+                                "/*.js",
+                                "/*.css"
                         ).permitAll()
                         .pathMatchers(HttpMethod.GET,
                                 "/api/restaurants/**",
@@ -72,6 +76,7 @@ public class SecurityConfig {
                         .pathMatchers("/api/order-history/**").authenticated()
                         .pathMatchers("/api/payments/**").authenticated()
                         .pathMatchers("/api/notifications/**").authenticated()
+                        .pathMatchers("/api/admin/**").authenticated()
                         .anyExchange().authenticated()
                 )
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))

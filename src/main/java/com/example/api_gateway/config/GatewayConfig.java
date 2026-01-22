@@ -67,6 +67,17 @@ public class GatewayConfig {
                         r -> r.path("/api/delivery/**", "/api/tracking/**")
                                 .uri("lb://delivery-service"))
 
+                // Admin Service
+                .route("admin-service-login",
+                        r -> r.path("/api/admin/auth/login")
+                                .and().method(HttpMethod.POST)
+                                .filters(f -> f.removeResponseHeader("Server"))
+                                .uri("lb://admin-service"))
+
+                .route("admin-service",
+                        r -> r.path("/api/admin/**")
+                                .uri("lb://admin-service"))
+
                 .build();
     }
 }
