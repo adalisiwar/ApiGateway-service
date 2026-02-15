@@ -12,7 +12,7 @@ import org.springframework.http.HttpMethod;
 public class GatewayConfig {
 
 
-        
+
     @Bean
     public RouteLocator routeLocator(RouteLocatorBuilder builder) {
         return builder.routes()
@@ -38,7 +38,7 @@ public class GatewayConfig {
                         r -> r.path("/api/users/profile/**")
                                 .uri("lb://user-service"))
 
-                // 
+                //
                 .route("restaurant-service-public",
                         r -> r.path("/api/restaurants/**", "/api/menu/**")
                                 .and().method(HttpMethod.GET)
@@ -62,7 +62,7 @@ public class GatewayConfig {
                 .route("order-service-history",
                         r -> r.path("/api/order-history/**")
                                 .uri("lb://order-service"))
-                // 
+                //
                 .route("delivery-service",
                         r -> r.path("/api/delivery/**", "/api/tracking/**")
                                 .uri("lb://delivery-service"))
@@ -74,8 +74,18 @@ public class GatewayConfig {
                                 .filters(f -> f.removeResponseHeader("Server"))
                                 .uri("lb://admin-service"))
 
-                .route("admin-service",
+                .route("admin-service-admin",
                         r -> r.path("/api/admin/**")
+                                .uri("lb://admin-service"))
+
+                .route("admin-service-delivery-personnels",
+                        r -> r.path("/api/delivery-personnels/**")
+                                .uri("lb://admin-service"))
+                .route("admin-service-restaurants",
+                        r -> r.path("/api/restaurants/**")
+                                .uri("lb://admin-service"))
+                .route("admin-service-users",
+                        r -> r.path("/api/users/**")
                                 .uri("lb://admin-service"))
 
                 .build();
