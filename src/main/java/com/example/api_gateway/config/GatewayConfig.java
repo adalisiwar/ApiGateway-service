@@ -66,6 +66,9 @@ public class GatewayConfig {
                 .route("delivery-service",
                         r -> r.path("/api/delivery/**", "/api/tracking/**")
                                 .uri("lb://delivery-service"))
+                .route("deliverer-service",
+                        r -> r.path("/api/deliverer/**", "/api/tracking/**")
+                                .uri("lb://delivery-service"))
 
                 // Admin Service
                 .route("admin-service-login",
